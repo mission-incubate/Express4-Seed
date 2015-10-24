@@ -1,0 +1,26 @@
+{
+    "version": "1.6.0",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "sourceMap": true
+    },
+    "files": [
+        "server/index.ts",
+        "gulpfile.ts",
+        "tools/config.ts"
+    ],
+    "filesGlob": [
+        "./server/**/*.ts",
+        "./gulpfile.ts",
+        "./tools/**/*.ts"
+    ],
+    "compileOnSave": false,
+    "exclude": []
+}
