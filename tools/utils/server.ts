@@ -4,7 +4,7 @@ import * as express from 'express';
 import * as openResource from 'open';
 import * as serveStatic from 'serve-static';
 import {resolve} from 'path';
-import {APP_BASE, LIVE_RELOAD_PORT, DOCS_PORT, PATH, PORT, ENV} from '../config';
+import {APP_BASE, DOCS_PORT, PATH/*, LIVE_RELOAD_PORT,  PORT, ENV*/} from '../config';
 // 
 // let minilr = minilrFn();
 // 

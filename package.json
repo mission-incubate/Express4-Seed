@@ -1,0 +1,48 @@
+{
+  "name": "express4-seed",
+  "version": "1.0.0",
+  "description": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natarajanmca11/Express4-Seed.git"
+  },
+  "keywords": [
+    "Express",
+    "typescript",
+    "Nodejs"
+  ],
+  "author": "Natarajan Ganapathi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/natarajanmca11/Express4-Seed/issues"
+  },
+  "homepage": "https://github.com/natarajanmca11/Express4-Seed#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  },
+  "devDependencies": {
+    "async": "^1.4.2",
+    "del": "^1.1.1",
+    "gulp": "^3.9.0",
+    "gulp-load-plugins": "^1.0.0",
+    "gulp-plumber": "~1.0.1",
+    "gulp-shell": "~0.4.3",
+    "gulp-sourcemaps": "~1.5.2",
+    "gulp-tslint": "^3.3.0",
+    "gulp-tslint-stylish": "^1.0.4",
+    "gulp-typescript": "~2.8.2",
+    "open": "0.0.5",
+    "reflect-metadata": "^0.1.2",
+    "run-sequence": "^1.1.4",
+    "slash": "^1.0.0",
+    "ts-node": "^0.2.5",
+    "tsd": "^0.6.5",
+    "typescript": "^1.6.2",
+    "typescript-register": "^1.1.0",
+    "yargs": "^3.25.0"
+  }
+}

@@ -27,7 +27,7 @@ export const PATH = {
     all: APP_DEST,
     dev: {
       all: `${APP_DEST}/${ENV}`,
-      lib: `${APP_DEST}/${ENV}/lib`,
+      lib: `${APP_DEST}/${ENV}/lib`
       // css: `${APP_DEST}/${ENV}/css`,
       // fonts: `${APP_DEST}/${ENV}/fonts`
     },
@@ -51,7 +51,8 @@ export const PATH = {
     jslib_copy_only: [
       //resolve('systemjs/dist/system-polyfills.js'),
       //resolve('systemjs/dist/system-polyfills.js.map')
-    ],
+      resolve('express/lib/express.js')
+    ]
     // csslib: [
     //   resolve('bootstrap/dist/css/bootstrap.css'),
     //   resolve('bootstrap/dist/css/bootstrap.css.map')

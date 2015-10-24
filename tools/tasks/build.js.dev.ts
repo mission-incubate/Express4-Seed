@@ -1,6 +1,6 @@
 import {join} from 'path';
-import {PATH, APP_SRC} from '../config';
-import {templateLocals, tsProjectFn} from '../utils';
+import {PATH/*, APP_SRC*/} from '../config';
+import {/*templateLocals,*/ tsProjectFn} from '../utils';
 
 export = function buildJSDev(gulp, plugins) {
   return function() {
