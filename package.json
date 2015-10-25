@@ -4,7 +4,8 @@
   "description": "0.0.1",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start" : "node ./dist/dev/index"
   },
   "repository": {
     "type": "git",
@@ -22,6 +23,8 @@
   },
   "homepage": "https://github.com/natarajanmca11/Express4-Seed#readme",
   "dependencies": {
+    "body-parser": "^1.14.1",
+    "debug": "^2.2.0",
     "express": "^4.13.3"
   },
   "devDependencies": {

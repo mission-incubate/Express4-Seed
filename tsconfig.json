@@ -13,6 +13,7 @@
     },
     "files": [
         "server/index.ts",
+        "server/routes/admin/index.ts",
         "gulpfile.ts",
         "tools/config.ts"
     ],

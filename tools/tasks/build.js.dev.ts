@@ -17,7 +17,7 @@ export = function buildJSDev(gulp, plugins) {
       .pipe(plugins.typescript(tsProject));
 
     return result.js
-      .pipe(plugins.sourcemaps.write())
+      //.pipe(plugins.sourcemaps.write())
     //.pipe(plugins.template(templateLocals()))
       .pipe(gulp.dest(PATH.dest.dev.all));
   };

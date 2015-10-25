@@ -19,12 +19,11 @@ gulp.task('clean',       task('clean', 'all'));
 gulp.task('clean.dist',  task('clean', 'dist'));
 gulp.task('clean.test',  task('clean', 'test'));
 
-
 // Build dev.
 gulp.task('build.dev', done =>
   runSequence('clean.dist',
               'tslint',
-              'build.jslib.dev',
+             // 'build.jslib.dev',
               'build.js.dev',
               done));
 
