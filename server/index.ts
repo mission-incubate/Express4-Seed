@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
-import * as logger from  'morgan';
+//import * as logger from  'morgan';
 
 //Routes Import 
 //TODO: Need to automate for register all routes.
@@ -13,14 +13,14 @@ let app = express();
 app.use(bodyParser());
 
 //app.use(favicon(__dirname + '/public/favicon.ico'));
-app.use(logger('dev'));
+//app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(['/adm*n', '/manager'], admin); // load the 'admin' router on '/adm*n' and '/manager', on the parent app
 
-//app.use((req, res, newxt) => { res.sendStatus(200); });
+app.use((req, res, newxt) => { res.sendStatus(404); });
 
 let server = app.listen(process.env.PORT || 3000, () => {
 	console.log('ENV Port No: ' + process.env.PORT);

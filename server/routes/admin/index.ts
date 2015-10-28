@@ -7,6 +7,8 @@ admin.get('/', function (req, res) {
   res.send('Admin Homepage');
 });
 
+
+
 let secret = express();
 secret.get('/', function (req, res) {
  // console.log(secret.mountpath); // /secr*t
