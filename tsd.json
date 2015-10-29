@@ -49,6 +49,9 @@
     },
     "body-parser/body-parser.d.ts": {
       "commit": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
+    },
+    "serve-favicon/serve-favicon.d.ts": {
+      "commit": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
     }
   }
 }

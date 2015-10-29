@@ -1,7 +1,9 @@
 import * as express from 'express';
-import * as path from 'path';
+import * as http from  'http';
 import * as bodyParser from 'body-parser';
-//import * as logger from  'morgan';
+import * as logger from  'morgan';
+import * as favicon from 'serve-favicon';
+//import * as serveIndex  from 'serve-index';
 
 //Routes Import 
 //TODO: Need to automate for register all routes.
@@ -12,21 +14,28 @@ let app = express();
 //let jsonParser = bodyParser.json();
 app.use(bodyParser());
 
-//app.use(favicon(__dirname + '/public/favicon.ico'));
-//app.use(logger('dev'));
+
+// all environments
+app.set('port', process.env.PORT || 3000);
+app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve URLs like /ftp/thing as public/ftp/thing
+//app.use('/www', serveIndex('public/www', {'icons': true}));
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.use(['/adm*n', '/manager'], admin); // load the 'admin' router on '/adm*n' and '/manager', on the parent app
 
-app.use((req, res, newxt) => { res.sendStatus(404); });
+// let server = app.listen(process.env.PORT || 3000, () => {
+// 	console.log('ENV Port No: ' + process.env.PORT);
+// 	let host = server.address().address;
+// 	let port = server.address().port;
+// 	console.log('Api listening at http://%s:%s', host, port);
+// });
 
-let server = app.listen(process.env.PORT || 3000, () => {
-	console.log('ENV Port No: ' + process.env.PORT);
-	let host = server.address().address;
-	let port = server.address().port;
-	console.log('Api listening at http://%s:%s', host, port);
+http.createServer(app).listen(app.get('port'), function () {
+    console.log('Express server listening on port ' + app.get('port'));
 });
 
 // error handlers
