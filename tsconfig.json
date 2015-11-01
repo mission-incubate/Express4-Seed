@@ -15,7 +15,10 @@
         "server/index.ts",
         "server/routes/admin/index.ts",
         "gulpfile.ts",
-        "tools/config.ts"
+        "tools/config.ts",
+        "tools/typings/tsd/express/express.d.ts",
+        "tools/typings/tsd/http.d.ts",
+        "tools/typings/tsd/tsd.d.ts"
     ],
     "filesGlob": [
         "./server/**/*.ts",

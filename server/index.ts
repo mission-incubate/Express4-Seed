@@ -1,72 +1,58 @@
+/// <reference path="./typings.d.ts" />
 import * as express from 'express';
 import * as http from  'http';
 import * as bodyParser from 'body-parser';
 import * as logger from  'morgan';
 import * as favicon from 'serve-favicon';
-//import * as serveIndex  from 'serve-index';
 
-//Routes Import 
-//TODO: Need to automate for register all routes.
 import * as admin from  './routes/admin';
 
-
-let app = express();
-//let jsonParser = bodyParser.json();
-app.use(bodyParser());
-
-
-// all environments
-app.set('port', process.env.PORT || 3000);
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Serve URLs like /ftp/thing as public/ftp/thing
-//app.use('/www', serveIndex('public/www', {'icons': true}));
-app.use(favicon(__dirname + '/public/favicon.ico'));
-
-app.use(['/adm*n', '/manager'], admin); // load the 'admin' router on '/adm*n' and '/manager', on the parent app
-
-// let server = app.listen(process.env.PORT || 3000, () => {
-// 	console.log('ENV Port No: ' + process.env.PORT);
-// 	let host = server.address().address;
-// 	let port = server.address().port;
-// 	console.log('Api listening at http://%s:%s', host, port);
-// });
-
-http.createServer(app).listen(app.get('port'), function () {
-    console.log('Express server listening on port ' + app.get('port'));
-});
-
-// error handlers
-
-//catch 404 and forward to error handler
-app.use((req, res, next) => {
-   var err = new Error('Not Found');
-   err['status'] = 404;
-   next(err);
-});
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-
-	app.use((err: any, req, res, next) => {
-		res.status(err['status'] || 500);
-		res.render('error', {
-			message: err.message,
-			error: err
-		});
-	});
+export class WebServer {
+    public Express: any;
+    Port: number;
+    constructor(port: number) {
+        var self = this;
+        self.Port = port;
+        self.Express = express();
+    }
+    public init(): WebServer {
+        var self = this;
+        self.Express.set('port', self.Port);
+        self.Express.use(logger('dev'));
+        self.Express.use(bodyParser.json());
+        self.Express.use(bodyParser.urlencoded({ extended: false }));
+        self.Express.use(favicon(__dirname + '/www/favicon.ico'));
+        self.registerModules();
+        return self;
+    }
+    public start() : void {
+        var self = this;
+        let Server = http.createServer(self.Express);
+        Server.listen(self.Port, null, (self.listenerCallback).bind(self));
+    }
+    private registerModules() :void {
+        var self = this;
+        self.Express.use(['/adm*n', '/manager'], admin);
+        self.Express.use(self.handlerFor404);
+        self.Express.use((self.errorHandler).bind(self));
+    }
+    private handlerFor404(req, res, next):void {
+        let err = new Error('Resource Not Found.');
+        err['status'] = 404;
+        next(err);
+    }
+    private errorHandler(err: any, req, res, next): void {
+        var self = this;
+        res.status(err['status'] || 500);
+        res.json({ 'error': {
+            message: err.message,
+            error: self.Express.get('env') === 'development' ? {} : err }
+        });
+    }
+    private listenerCallback(): void {
+        var self = this;
+        let port = self.Express.get('port');
+        console.log('Express server listening on port ' + port);
+    }
 }
-
-// production error handler
-// no stacktraces leaked to user
-app.use((err: any, req, res, next) => {
-	res.status(err.status || 500);
-	res.render('error', {
-		message: err.message,
-		error: {}
-	});
-});
-export = app;
+new WebServer(3000).init().start();

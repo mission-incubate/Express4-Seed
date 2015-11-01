@@ -14,6 +14,7 @@ export const DOCS_PORT        = argv['docs-port']   || 4003;
 export const APP_BASE         = argv['base']        || '/';
 
 export const APP_SRC          = 'server';
+export const APP_WEB          = 'www';
 export const APP_DEST         = 'dist';
 export const APP_DOCS         = 'docs';
 //export const ANGULAR_BUNDLES  = './node_modules/angular2/bundles';
@@ -26,8 +27,9 @@ export const PATH = {
   dest: {
     all: APP_DEST,
     dev: {
-      all: `${APP_DEST}/${ENV}`,
-      lib: `${APP_DEST}/${ENV}/lib`
+      all  : `${APP_DEST}/${ENV}`,
+      web  : `${APP_DEST}/${ENV}/${APP_WEB}`,
+      lib  : `${APP_DEST}/${ENV}/lib`
       // css: `${APP_DEST}/${ENV}/css`,
       // fonts: `${APP_DEST}/${ENV}/fonts`
     },
@@ -35,7 +37,8 @@ export const PATH = {
     tmp: '.tmp'
   },
   src: {
-    all: APP_SRC,
+    all : APP_SRC,
+    web : `${APP_SRC}/${APP_WEB}`,
     // jslib_inject: [
     //   // Order is quite important here for the HTML tag injection.
     //   // resolve('es6-shim/es6-shim.min.js'),

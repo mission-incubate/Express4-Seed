@@ -25,6 +25,7 @@ gulp.task('build.dev', done =>
               'tslint',
              // 'build.jslib.dev',
               'build.js.dev',
+              'build.www',
               done));
 
 
