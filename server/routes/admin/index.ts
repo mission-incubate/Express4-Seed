@@ -1,20 +1,34 @@
-import * as express from 'express';
+/// <reference path="../../typings.d.ts" />
+import {IRoute, RequestHandler}  from 'express';
 
-let admin = express();
-
-admin.get('/', function (req, res) {
-  //console.log(admin.mountpath); // [ '/adm*n', '/manager' ]
-  res.send('Admin Homepage');
-});
-
-
-
-let secret = express();
-secret.get('/', function (req, res) {
- // console.log(secret.mountpath); // /secr*t
-  res.send('Admin Secret');
-});
-
-admin.use('/secr*t', secret); // load the 'secret' router on '/secr*t', on the 'admin' sub app
-
-export = admin;
+export class Admin implements IRoute {
+	path: string;
+	stack: any;
+	constructor() {
+		this.path = '/Admin';
+	}
+	all(handler: RequestHandler) {
+		return <IRoute>this;
+	}
+	get(handerl: RequestHandler): any {
+		return {'Message' : 'all'};
+	}
+	post(handerl: RequestHandler): any {
+		return <IRoute>this;
+	}
+	put(handerl: RequestHandler): any {
+		return <IRoute>this;
+	}
+	delete(handerl: RequestHandler): any {
+		return <IRoute>this;
+	}
+	patch(handerl: RequestHandler): any {
+		return <IRoute>this;
+	}
+	options(handerl: RequestHandler): any {
+		return <IRoute>this;
+	}
+	head(handerl: RequestHandler): any {
+		return <IRoute>this;
+	}
+}
