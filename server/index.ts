@@ -5,11 +5,12 @@ import * as bodyParser from 'body-parser';
 import * as logger from  'morgan';
 import * as favicon from 'serve-favicon';
 
-import * as admin from  './routes/admin';
+//import * as admin from  './routes/admin';
+import { Base } from './routes/routes';
 
 export class WebServer {
-    public Express: any;
-    Port: number;
+    private Express: any;
+    private Port: number;
     constructor(port: number) {
         var self = this;
         self.Port = port;
@@ -32,7 +33,8 @@ export class WebServer {
     }
     private registerModules() :void {
         var self = this;
-        self.Express.use(['/adm*n', '/manager'], admin);
+        //self.Express.use(['/adm*n', '/manager'], admin);
+        self.Express.use('/', new Base());
         self.Express.use(self.handlerFor404);
         self.Express.use((self.errorHandler).bind(self));
     }
