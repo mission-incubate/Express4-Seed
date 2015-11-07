@@ -5,11 +5,10 @@ import * as bodyParser from 'body-parser';
 import * as logger from  'morgan';
 import * as favicon from 'serve-favicon';
 
-//import * as admin from  './routes/admin';
-import { Base } from './routes/routes';
+import * as route from './routes/routes';
 
 export class WebServer {
-    private Express: any;
+    private Express: express.Express;
     private Port: number;
     constructor(port: number) {
         var self = this;
@@ -33,17 +32,16 @@ export class WebServer {
     }
     private registerModules() :void {
         var self = this;
-        //self.Express.use(['/adm*n', '/manager'], admin);
-        self.Express.use('/', new Base());
+        self.Express.use('/', route);
         self.Express.use(self.handlerFor404);
         self.Express.use((self.errorHandler).bind(self));
     }
-    private handlerFor404(req, res, next):void {
+    private handlerFor404(req:express.Request, res:express.Response, next:Function):void {
         let err = new Error('Resource Not Found.');
         err['status'] = 404;
         next(err);
     }
-    private errorHandler(err: any, req, res, next): void {
+    private errorHandler(err: Error, req:express.Request, res:express.Response, next:Function): void {
         var self = this;
         res.status(err['status'] || 500);
         res.json({ 'error': {
