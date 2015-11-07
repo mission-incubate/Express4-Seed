@@ -3,7 +3,7 @@ import * as express from 'express';
 import * as http from  'http';
 import * as bodyParser from 'body-parser';
 import * as logger from  'morgan';
-import * as favicon from 'serve-favicon';
+//import * as favicon from 'serve-favicon';
 
 import * as route from './routes/routes';
 
@@ -21,7 +21,9 @@ export class WebServer {
         self.Express.use(logger('dev'));
         self.Express.use(bodyParser.json());
         self.Express.use(bodyParser.urlencoded({ extended: false }));
-        self.Express.use(favicon(__dirname + '/www/favicon.ico'));
+        //self.Express.use(favicon(__dirname + '/www/favicon.ico'));
+        self.Express.use(express.static(__dirname + '/www'));
+        self.Express.use('/docs',express.static(__dirname + '/docs'));
         self.registerModules();
         return self;
     }

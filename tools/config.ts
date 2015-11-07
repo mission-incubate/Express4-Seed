@@ -23,7 +23,7 @@ export const VERSION          = version();
 export const PATH = {
   cwd: process.cwd(),
   tools: 'tools',
-  docs :`${APP_DEST}/${APP_DOCS}`,
+  docs :`${APP_DEST}/${ENV}/${APP_DOCS}`,
   dest: {
     all: APP_DEST,
     dev: {

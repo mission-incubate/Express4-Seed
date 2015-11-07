@@ -14,6 +14,7 @@
     "files": [
         "server/index.ts",
         "server/routes/admin/index.ts",
+        "server/routes/routs.ts",
         "gulpfile.ts",
         "tools/config.ts",
         "tools/typings/tsd/express/express.d.ts",
