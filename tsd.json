@@ -60,7 +60,13 @@
       "commit": "421d6610bdb09e1015b71f5991d7a68d079eca21"
     },
     "tedious/tedious.d.ts": {
-      "commit": "421d6610bdb09e1015b71f5991d7a68d079eca21"
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
+    },
+    "morgan/morgan.d.ts": {
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
+    },
+    "open/open.d.ts": {
+      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
     }
   }
 }

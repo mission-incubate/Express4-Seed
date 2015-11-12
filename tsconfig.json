@@ -11,27 +11,6 @@
         "experimentalDecorators": true,
         "sourceMap": true
     },
-    "files": [
-        "server/index.ts",
-        "server/routes/admin/index.ts",
-        "server/routes/routs.ts",
-        "server/Business/User/BaseBO.ts",
-        "server/Common/Model/UserDto.ts",
-        "server/Common/Common.ts",
-        "server/Dal/BaseDal.ts",
-        "server/Dal/Config.ts",
-        "gulpfile.ts",
-        "tools/config.ts",
-        "tools/typings/tsd/express/express.d.ts",
-        "tools/typings/tsd/http.d.ts",
-        "tools/typings/mssql/mssql.d.ts",
-        "tools/typings/tsd/tsd.d.ts"
-    ],
-    "filesGlob": [
-        "./server/**/*.ts",
-        "./gulpfile.ts",
-        "./tools/**/*.ts"
-    ],
     "compileOnSave": false,
-    "exclude": []
+    "exclude": ["node_modules"]
 }
