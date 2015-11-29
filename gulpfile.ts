@@ -28,6 +28,15 @@ gulp.task('build.dev', done =>
               'build.www',
               done));
 
+// --------------
+// Docs
+
+gulp.task('docs', done =>
+  runSequence(
+        'build.docs',
+        'serve.docs',
+        done
+  ));
 
 
 

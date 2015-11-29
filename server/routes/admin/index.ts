@@ -1,34 +1,17 @@
 /// <reference path="../../typings.d.ts" />
-import {IRoute, RequestHandler}  from 'express';
+import * as express from 'express';
+import {BOFactory} from '../../Business/baseBO';
+import {UserBO} from '../../Business/User/UserBO';
+import {UserDto} from '../../Common/Model/UserDto';
 
-export class Admin implements IRoute {
-	path: string;
-	stack: any;
-	constructor() {
-		this.path = '/Admin';
-	}
-	all(handler: RequestHandler) {
-		return <IRoute>this;
-	}
-	get(handerl: RequestHandler): any {
-		return {'Message' : 'all'};
-	}
-	post(handerl: RequestHandler): any {
-		return <IRoute>this;
-	}
-	put(handerl: RequestHandler): any {
-		return <IRoute>this;
-	}
-	delete(handerl: RequestHandler): any {
-		return <IRoute>this;
-	}
-	patch(handerl: RequestHandler): any {
-		return <IRoute>this;
-	}
-	options(handerl: RequestHandler): any {
-		return <IRoute>this;
-	}
-	head(handerl: RequestHandler): any {
-		return <IRoute>this;
-	}
-}
+let admin = express();
+let userBO = BOFactory.CreateBO(UserBO);
+admin.get('/', (req: express.Request, res: express.Response, next: Function): any => {
+	let userDto = <UserDto>userBO.GetById(req.params);
+	return res.send({ success: true, message: 'Admin Get Method', val: userDto });
+});
+admin.post('/', (req: express.Request, res: express.Response, next: Function): any => {
+	let userDto = <UserDto>userBO.GetByName(req.params);
+	return res.send({ success: true, message: 'Admin Post Method', val: userDto });
+});
+export = admin;
