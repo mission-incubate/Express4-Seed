@@ -8,6 +8,7 @@ export class BaseDal {
 		this.Connection = new Connection(config);
 	}
 	public ExecSql(sql: string): void {
+		//var event = this.Connection.on('connect', ()=>{});
 		let req = new Request(sql, this.Callback);
 		this.Connection.execSql(req);
 	}

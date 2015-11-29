@@ -1,5 +1,5 @@
 import {join} from 'path';
-import {PATH/*, APP_SRC*/} from '../config';
+import {PATH, APP_SRC} from '../config';
 import {/*templateLocals,*/ tsProjectFn} from '../utils';
 
 export = function buildJSDev(gulp, plugins) {
@@ -17,7 +17,11 @@ export = function buildJSDev(gulp, plugins) {
       .pipe(plugins.typescript(tsProject));
 
     return result.js
-      //.pipe(plugins.sourcemaps.write())
+      .pipe(plugins.sourcemaps.write(
+        {
+          includeContent: false,
+          sourceRoot: function(file) { return join(PATH.basePath, '../' + APP_SRC + '/'); }
+        }))
     //.pipe(plugins.template(templateLocals()))
       .pipe(gulp.dest(PATH.dest.dev.all));
   };
