@@ -4,11 +4,14 @@ import {Request, Response} from '../common/common';
 export class BaseBO {
 	public Dal: BaseDal;
 	constructor() {
-		let config :ConnectionConfig  = {userName: '', password:'', server:'', domain:''};
+		let config :ConnectionConfig  = {
+			userName: 'sa', password:'irtt', server:'MAC-WIN\SQLEXPRESS',
+			options: { database : 'Natarajan', instanceName:'MAC-WIN\SQLEXPRESS'}
+		};
 		this.Dal = new BaseDal(config);
 	}
 	public GetById(request: Request): Response {
-		this.Dal.ExecSql('');
+		this.Dal.ExecSql('select * from [user]');
 		return '';
 	}
 }
