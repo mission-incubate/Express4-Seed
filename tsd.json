@@ -9,7 +9,7 @@
       "commit": "bd03c6ea51abde7d13e354908716c6373fc38b1f"
     },
     "node/node.d.ts": {
-      "commit": "1c7dc757837b1c2089b7d2c2c6fabdeba77587ab"
+      "commit": "e5a27ea95e47b95333784f1f0d590127b4e39a89"
     },
     "gulp/gulp.d.ts": {
       "commit": "05557455c49043ff0189182e27c9e04403a70802"
@@ -59,14 +59,14 @@
     "es6-promise/es6-promise.d.ts": {
       "commit": "421d6610bdb09e1015b71f5991d7a68d079eca21"
     },
-    "tedious/tedious.d.ts": {
-      "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
-    },
     "morgan/morgan.d.ts": {
       "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
     },
     "open/open.d.ts": {
       "commit": "c2c22c3b953fe9730d4802022d5e0d18d083909e"
+    },
+    "tedious/tedious.d.ts": {
+      "commit": "e5a27ea95e47b95333784f1f0d590127b4e39a89"
     }
   }
 }

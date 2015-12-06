@@ -8,12 +8,18 @@ export class BaseDal {
 		this.Connection = new Connection(config);
 	}
 	public ExecSql(sql: string): void {
+		this.Connection.on('connect', (err) => {
+			if (err) { console.log(err); };
+			this.Execute(sql);
+		});
+	}
+
+	private Execute(sql: string): void {
+		console.log(sql);
 		let req = new Request(sql, this.Callback);
-		this.Connection.on('connect', () => {
-			req.on('row', (columns) => {
-				columns.forEach(function(column) {
-					console.log(column.value);
-				});
+		req.on('row', (columns) => {
+			columns.forEach(function(column) {
+				console.log(column.value);
 			});
 		});
 		this.Connection.execSql(req);
