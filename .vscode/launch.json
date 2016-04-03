@@ -5,10 +5,11 @@
 			"name": "Launch",
 			"type": "node",
 			"request": "launch",
-			"program": "server/index.ts",
+			"program": "${workspaceRoot}\\server\\index.ts",
 			"stopOnEntry": false,
 			"args": [],
-			"cwd": ".",
+			"cwd": "${workspaceRoot}",
+			"preLaunchTask": null,
 			"runtimeExecutable": null,
 			"runtimeArgs": [
 				"--nolazy"
@@ -18,13 +19,19 @@
 			},
 			"externalConsole": false,
 			"sourceMaps": true,
-			"outDir": "./dist/dev"
+			"outDir": "${workspaceRoot}/dist/dev"
 		},
 		{
 			"name": "Attach",
 			"type": "node",
 			"request": "attach",
-			"port": 5858
+			"port": 5858,
+			"address": "localhost",
+			"restart": false,
+			"sourceMaps": false,
+			"outDir": null,
+			"localRoot": "${workspaceRoot}",
+			"remoteRoot": null
 		}
 	]
 }

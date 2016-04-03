@@ -48,25 +48,48 @@ export {ConnectionConfig as config} from 'tedious';
 
 
 export class BaseDal {
-	private Connection: Connection;
-	constructor(config: ConnectionConfig) {
-		this.Connection = new Connection(config);
-	}
-	public ExecSql(sql: string): void {
-		let req = new Request(sql, this.Callback);
-		this.Connection.on('connect', () => {
-			req.on('row', (columns) => {
-				columns.forEach(function(column) {
-					console.log(column.value);
-				});
-			});
-		});
-		this.Connection.execSql(req);
-	}
+    private Connection: Connection;
+    constructor(config: ConnectionConfig) {
+        this.Connection = new Connection(config);
+    }
+    public ExecSql(sql: string): void {
+        let req = new Request(sql, this.Callback);
+        req.on('doneInProc', function(rowCount, more, rows) {
+            console.log(rows);
+            return rows;
+        });
+        this.Connection.on('connect', () => {
+            req.on('row', (columns) => {
+                columns.forEach(function(column) {
+                    console.log(column.value);
+                });
+            });
+        });
+        this.Connection.execSql(req);
+    }
 
-	private Callback(error: Error, rowCount: number, rows: any[]): void {
-		if (error) {
-			console.log(error);
-		}
-	}
+    public ExecSqlTest(sql: string, callback: Function): void {
+        let req = new Request(sql, this.Callback);
+        req.on('doneInProc', function(rowCount, more, rows) {
+            console.log(rows);
+            return rows;
+        });
+        this.Connection.on('connect', () => {
+            req.on('row', (columns) => {
+                columns.forEach(function(column) {
+                    console.log(column.value);
+                });
+            });
+        });
+        this.Connection.execSql(req);
+    }
+
+
+
+    private Callback(error: Error, rowCount: number, rows: any[]): void {
+        if (error) {
+            console.log(error);
+            throw error;
+        }
+    }
 }

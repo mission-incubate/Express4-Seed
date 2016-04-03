@@ -4,7 +4,7 @@ import * as http from  'http';
 import * as bodyParser from 'body-parser';
 import * as logger from  'morgan';
 //import * as favicon from 'serve-favicon';
-
+import * as expressPromise from 'express-promise';
 import * as route from './routes/routes';
 
 export class WebServer {
@@ -18,6 +18,7 @@ export class WebServer {
     public init(): WebServer {
         var self = this;
         self.Express.set('port', self.Port);
+        self.Express.use(new expressPromise());
         self.Express.use(logger('dev'));
         self.Express.use(bodyParser.json());
         self.Express.use(bodyParser.urlencoded({ extended: false }));
@@ -48,8 +49,9 @@ export class WebServer {
         res.status(err['status'] || 500);
         res.json({ 'error': {
             message: err.message,
-            error: self.Express.get('env') === 'development' ? {} : err }
+            error: self.Express.get('env') === 'development' ?  err :{} }
         });
+        console.log(err.message, err);
     }
     private listenerCallback(): void {
         var self = this;
