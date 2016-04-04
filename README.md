@@ -5,6 +5,6 @@
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Dependency Status](https://david-dm.org/natarajanmca11/Express4-Seed.svg)](https://david-dm.org/natarajanmca11/Express4-Seed)
 [![devDependency Status](https://david-dm.org/natarajanmca11/Express4-Seed/dev-status.svg)](https://david-dm.org/natarajanmca11/Express4-Seed#info=devDependencies)
-
+[![npm version](https://badge.fury.io/js/express4-seed.svg)](https://badge.fury.io/js/express4-seed)
 # Express4-Seed
 Express Seed Project
